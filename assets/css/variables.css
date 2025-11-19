@@ -20,6 +20,11 @@
      --color-accent-light: #D9B599;
      --color-accent-dark: #B38B69;
 
+     /* Azul suave - calma y profesionalidad */
+     --color-tertiary: #5B8FC4;
+     --color-tertiary-light: #7BA3D4;
+     --color-tertiary-dark: #4575B4;
+
      /* Neutros */
      --color-text: #2D2D2D;
      --color-text-light: #5A5A5A;
