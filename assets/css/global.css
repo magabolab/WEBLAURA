@@ -166,6 +166,35 @@ p {
     color: var(--color-white);
 }
 
+/* Botón azul (terciario) */
+.btn-tertiary {
+    background: linear-gradient(135deg, var(--color-tertiary) 0%, var(--color-tertiary-dark) 100%);
+    color: var(--color-white);
+    box-shadow: var(--shadow-md);
+    border: none;
+}
+.btn-tertiary:hover {
+    background: linear-gradient(135deg, var(--color-tertiary-dark) 0%, var(--color-tertiary) 100%);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+.btn-tertiary:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Utilidades para azul */
+.text-blue {
+    color: var(--color-tertiary) !important;
+}
+.bg-blue {
+    background-color: var(--color-tertiary) !important;
+    color: var(--color-white) !important;
+}
+.border-blue {
+    border-color: var(--color-tertiary) !important;
+}
+
 /* Tamaños de botón */
 .btn-sm {
     padding: var(--space-2) var(--space-4);

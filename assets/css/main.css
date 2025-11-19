@@ -1,3 +1,11 @@
+.faq-section .accordion-header {
+    color: var(--color-tertiary-dark);
+    background: transparent;
+}
+.faq-section .accordion-item.active .accordion-header {
+    color: var(--color-white) !important;
+    background: linear-gradient(90deg, var(--color-tertiary) 0%, var(--color-tertiary-dark) 100%);
+}
 /* ================================================
    ESTILOS PRINCIPALES - Laura Beneite Psicología
    ================================================ */
@@ -135,23 +143,95 @@
     top: 0;
     right: -100%;
     width: 80%;
-    max-width: 300px;
+    max-width: 320px;
     height: 100vh;
-    background-color: var(--color-white);
-    box-shadow: var(--shadow-2xl);
-    padding: var(--space-20) var(--space-6);
-    transition: right var(--transition-slow);
+    background: rgba(255,255,255,0.98);
+    box-shadow: 0 8px 32px 0 rgba(91,143,196,0.18);
+    padding: var(--space-20) var(--space-8);
+    transition: right 0.5s cubic-bezier(.4,0,.2,1), opacity 0.4s cubic-bezier(.4,0,.2,1);
     z-index: calc(var(--z-fixed) + 5);
+    opacity: 0.7;
 }
 
 .mobile-menu.active {
     right: 0;
+    opacity: 1;
+}
+
+.mobile-menu .nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    margin-top: var(--space-12);
+    margin-bottom: var(--space-12);
 }
 
 .mobile-menu .nav-link {
-    padding: var(--space-4) 0;
+    padding: var(--space-6) 0;
+    font-size: var(--text-xl);
+    border-bottom: 1px solid var(--color-tertiary-light);
+    color: var(--color-tertiary-dark);
+    transition: color 0.3s cubic-bezier(.4,0,.2,1), background 0.3s cubic-bezier(.4,0,.2,1);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-4);
+}
+
+.mobile-menu .nav-link:last-child {
+    margin-bottom: 0;
+}
+
+.mobile-menu .btn,
+.mobile-menu .btn-primary,
+.mobile-menu .btn-accent,
+.mobile-menu .btn-tertiary {
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-4);
+    width: 100%;
     font-size: var(--text-lg);
-    border-bottom: 1px solid var(--color-secondary);
+    padding: var(--space-5) 0;
+    display: block;
+}
+
+.mobile-menu-toggle {
+    transition: transform 0.4s cubic-bezier(.4,0,.2,1);
+}
+
+.mobile-menu-toggle:active {
+    transform: scale(0.92) rotate(-8deg);
+}
+
+.mobile-menu-toggle .hamburger-line {
+    transition: background 0.3s cubic-bezier(.4,0,.2,1), transform 0.4s cubic-bezier(.4,0,.2,1), opacity 0.3s cubic-bezier(.4,0,.2,1);
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+    background: var(--color-tertiary);
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+    background: var(--color-tertiary);
+}
+
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(91,143,196,0.18);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    pointer-events: none;
+    z-index: calc(var(--z-fixed) + 4);
+    transition: opacity 0.4s cubic-bezier(.4,0,.2,1);
+}
+
+.mobile-menu.active ~ .mobile-menu-overlay {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 /* ====== HERO SECTION ====== */
@@ -256,6 +336,9 @@
     margin-bottom: var(--space-12);
     color: var(--color-primary-dark);
 }
+.faq-section .section-title {
+    color: var(--color-white);
+}
 
 .section-subtitle {
     text-align: center;
@@ -263,6 +346,9 @@
     color: var(--color-text-light);
     max-width: 700px;
     margin: 0 auto var(--space-12);
+}
+.faq-section .section-subtitle {
+    color: rgba(255,255,255,0.85);
 }
 
 .desires-grid {
@@ -306,7 +392,7 @@
 .desire-title {
     font-size: var(--text-xl);
     margin-bottom: var(--space-4);
-    color: var(--color-primary);
+    color: var(--color-tertiary);
 }
 
 .desire-text {
@@ -373,12 +459,12 @@
     align-items: center;
     gap: var(--space-2);
     padding: var(--space-3) var(--space-6);
-    background-color: rgba(139, 111, 94, 0.1);
+    background-color: rgba(91, 143, 196, 0.08); /* azul suave */
     border-radius: var(--radius-lg);
     margin-top: var(--space-6);
     font-size: var(--text-sm);
     font-weight: var(--font-medium);
-    color: var(--color-primary);
+    color: var(--color-tertiary);
 }
 
 /* ====== SECTION: SERVICIOS ====== */
@@ -442,7 +528,7 @@
 .service-title {
     font-size: var(--text-2xl);
     margin-bottom: var(--space-4);
-    color: var(--color-primary);
+    color: var(--color-tertiary);
 }
 
 .service-description {
@@ -576,8 +662,10 @@
 
 /* ====== SECTION: FAQ / OBJECIONES (ACORDEÓN) ====== */
 
+/* Fondo azul para dar protagonismo a la sección FAQ */
 .faq-section {
-    background-color: var(--color-white);
+    background: linear-gradient(135deg, var(--color-tertiary-light) 0%, var(--color-tertiary) 100%);
+    color: var(--color-white);
 }
 
 .accordion {
@@ -589,8 +677,9 @@
     margin-bottom: var(--space-4);
     border-radius: var(--radius-xl);
     overflow: hidden;
-    background-color: var(--color-background);
-    border: 1px solid var(--color-secondary);
+    background-color: var(--color-white);
+    border-left: 4px solid var(--color-tertiary);
+    border: 1px solid var(--color-tertiary-light);
     transition: all var(--transition-base);
 }
 
@@ -614,9 +703,25 @@
     color: var(--color-primary);
     transition: all var(--transition-base);
 }
+.faq-section .accordion-header {
+    color: var(--color-tertiary-dark);
+    background: transparent;
+}
+.faq-section .accordion-item.active .accordion-header {
+    color: var(--color-white) !important;
+    background: linear-gradient(90deg, var(--color-tertiary) 0%, var(--color-tertiary-dark) 100%);
+}
 
 .accordion-header:hover {
     color: var(--color-accent);
+}
+.faq-section .accordion-header:hover {
+    color: var(--color-tertiary-light);
+}
+
+.accordion-item.active .accordion-header {
+    background: linear-gradient(90deg, var(--color-tertiary) 0%, var(--color-tertiary-dark) 100%);
+    color: var(--color-white) !important;
 }
 
 .accordion-icon {
@@ -631,10 +736,21 @@
     transition: all var(--transition-base);
     font-weight: var(--font-bold);
 }
+.faq-section .accordion-icon {
+    background-color: var(--color-white);
+    color: var(--color-tertiary-dark);
+    border: 2px solid var(--color-tertiary-light);
+    box-shadow: 0 1px 4px 0 rgba(91,143,196,0.10);
+    transition: background 0.4s cubic-bezier(.4,0,.2,1), color 0.3s cubic-bezier(.4,0,.2,1), border 0.3s cubic-bezier(.4,0,.2,1), transform 0.4s cubic-bezier(.4,0,.2,1), box-shadow 0.3s cubic-bezier(.4,0,.2,1);
+}
 
 .accordion-item.active .accordion-icon {
     transform: rotate(45deg);
     background-color: var(--color-accent);
+    color: var(--color-white);
+}
+.faq-section .accordion-item.active .accordion-icon {
+    background-color: var(--color-tertiary-dark);
     color: var(--color-white);
 }
 
@@ -649,9 +765,92 @@
     color: var(--color-text-light);
     line-height: var(--leading-relaxed);
 }
+.faq-section .accordion-content-inner {
+    color: var(--color-tertiary-dark);
+    background: var(--color-white);
+    border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+}
 
 .accordion-item.active .accordion-content {
     max-height: 500px;
+}
+
+/* --- UX/UI Mejorado para FAQ/Objeciones --- */
+.faq-section .accordion {
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-8);
+    gap: var(--space-6);
+    display: flex;
+    flex-direction: column;
+}
+.faq-section .accordion-item {
+    margin-bottom: var(--space-6);
+    border-radius: var(--radius-2xl);
+    box-shadow: 0 2px 16px 0 rgba(91,143,196,0.08);
+    transition: box-shadow 0.4s cubic-bezier(.4,0,.2,1), transform 0.3s cubic-bezier(.4,0,.2,1);
+    will-change: box-shadow, transform;
+    overflow: visible;
+}
+.faq-section .accordion-item.active {
+    box-shadow: 0 6px 32px 0 rgba(91,143,196,0.16);
+    transform: translateY(-2px) scale(1.02);
+    z-index: 2;
+}
+.faq-section .accordion-header {
+    min-height: 64px;
+    padding: var(--space-6) var(--space-8);
+    border-radius: var(--radius-2xl);
+    transition: background 0.4s cubic-bezier(.4,0,.2,1), color 0.3s cubic-bezier(.4,0,.2,1), box-shadow 0.3s cubic-bezier(.4,0,.2,1), transform 0.2s cubic-bezier(.4,0,.2,1);
+    outline: none;
+    box-shadow: none;
+    position: relative;
+}
+.faq-section .accordion-header:hover,
+.faq-section .accordion-header:focus {
+    background: rgba(91,143,196,0.08);
+    color: var(--color-tertiary);
+    box-shadow: 0 2px 8px 0 rgba(91,143,196,0.10);
+    transform: translateY(-1px) scale(1.01);
+    cursor: pointer;
+}
+.faq-section .accordion-header:focus-visible {
+    outline: 2px solid var(--color-tertiary-dark);
+    outline-offset: 2px;
+}
+.faq-section .accordion-icon {
+    transition: background 0.4s cubic-bezier(.4,0,.2,1), color 0.3s cubic-bezier(.4,0,.2,1), border 0.3s cubic-bezier(.4,0,.2,1), transform 0.4s cubic-bezier(.4,0,.2,1), box-shadow 0.3s cubic-bezier(.4,0,.2,1);
+}
+.faq-section .accordion-item.active .accordion-header {
+    background: linear-gradient(90deg, var(--color-tertiary) 0%, var(--color-tertiary-dark) 100%);
+    color: var(--color-white) !important;
+    box-shadow: 0 4px 24px 0 rgba(91,143,196,0.18);
+    transform: translateY(-2px) scale(1.02);
+}
+.faq-section .accordion-content {
+    overflow: hidden;
+    transition: max-height 0.6s cubic-bezier(.4,0,.2,1), opacity 0.5s cubic-bezier(.4,0,.2,1);
+    opacity: 0;
+    max-height: 0;
+}
+.faq-section .accordion-item.active .accordion-content {
+    opacity: 1;
+    max-height: 500px;
+    transition: max-height 0.7s cubic-bezier(.4,0,.2,1), opacity 0.5s cubic-bezier(.4,0,.2,1);
+}
+.faq-section .accordion-content-inner {
+    padding: var(--space-8) var(--space-8) var(--space-8) var(--space-8);
+    color: var(--color-tertiary-dark);
+    background: var(--color-white);
+    border-radius: 0 0 var(--radius-2xl) var(--radius-2xl);
+    font-size: var(--text-lg);
+    box-shadow: 0 1px 8px 0 rgba(91,143,196,0.06);
+}
+@media (max-width: 600px) {
+  .faq-section .accordion-header,
+  .faq-section .accordion-content-inner {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
 }
 
 /* ====== SECTION: SITUACIONES IDENTIFICABLES ====== */
@@ -693,7 +892,7 @@
 
 .situation-title {
     font-size: var(--text-xl);
-    color: var(--color-primary);
+    color: var(--color-tertiary);
     margin-bottom: var(--space-4);
 }
 
@@ -747,7 +946,7 @@
     padding: var(--space-8);
     box-shadow: var(--shadow-md);
     position: relative;
-    border-left: 4px solid var(--color-accent);
+    border-left: 4px solid var(--color-tertiary);
 }
 
 .testimonial-quote {
@@ -914,6 +1113,17 @@
 }
 
 /* ====== UTILIDADES RESPONSIVE ====== */
+/* ====== UTILIDADES AZUL ====== */
+.text-blue {
+    color: var(--color-tertiary) !important;
+}
+.bg-blue {
+    background-color: var(--color-tertiary) !important;
+    color: var(--color-white) !important;
+}
+.border-blue {
+    border-color: var(--color-tertiary) !important;
+}
 
 @media (max-width: 767px) {
     .hide-mobile {
